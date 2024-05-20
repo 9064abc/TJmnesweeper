@@ -1,1 +1,1 @@
-
+var cvs = getElementById("canvas")
