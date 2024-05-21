@@ -11,6 +11,7 @@ ground.src = "ground.png";
 var width = 9;
 var height = 9;
 var i,j;
+var board;
 function ondown(event){
   
 }
@@ -33,7 +34,7 @@ function draw(){
     }
 }
 function reset(){
-    var board = Array(5).fill().map(() => Array(5).fill(0));
+    board = Array(5).fill().map(() => Array(5).fill(0));
     draw();
 }
 reset();
