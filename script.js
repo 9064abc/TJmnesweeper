@@ -37,4 +37,4 @@ function reset(){
     board = Array(height).fill().map(() => Array(width).fill(0));
     draw();
 }
-reset();
+base.onload() = reset();
