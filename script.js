@@ -8,6 +8,9 @@ var flag = new Image();
 //flag.src = "logo_url";
 base.src = "base.png";
 ground.src = "ground.png";
+var width = 9;
+var height = 9;
+var i,j;
 function ondown(event){
   
 }
@@ -19,10 +22,18 @@ cvs.addEventListener("mouseup",onup,false);
 function draw(){
     var cvs = document.getElementById("minesweeper");
     var context　= cvs.getContext("2d");
-    context.drawImage(base,40,40);
-    context.drawImage(ground,40,80);
+    for(i=0;i<height;i++){
+        for(j=0;j<width;j++)
+            if(board[i][j] == 0){
+                context.drawImage(base,40*(i+1),40*(j+1));
+            }
+            else if(board[i][j] == 1){
+                context.drawImage(ground,40,80);
+            }
+    }
 }
 function reset(){
+    var board = Array(5).fill().map(() => Array(5).fill(0));
     draw();
 }
 reset();
