@@ -14,8 +14,8 @@ function ondown(event){
 function onup(event){
   
 }
-cvs.addEventListner("mousedown",ondown,false);
-cvs.addEventListner("mouseup",onup,false);
+cvs.addEventListener("mousedown",ondown,false);
+cvs.addEventListener("mouseup",onup,false);
 function draw(){
     var cvs = document.getElementById("minesweeper");
     var context　= cvs.getContext("2d");
