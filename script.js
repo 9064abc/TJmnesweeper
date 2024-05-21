@@ -34,7 +34,7 @@ function draw(){
     }
 }
 function reset(){
-    board = Array(5).fill().map(() => Array(5).fill(0));
+    board = Array(height).fill().map(() => Array(width).fill(0));
     draw();
 }
 reset();
