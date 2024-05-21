@@ -1,5 +1,10 @@
+body{
+  position: relative;
+  top: 0;
+  left: 0;
+}
 #minesweeper{
-  psition: absolute;
+  position: absolute;
   top: 150px;
   left: 30px;
 }
