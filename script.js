@@ -11,20 +11,23 @@ ground.src = "ground.png";
 var width = 12;
 var height = 9;
 var length = 40;
-var i,j,x,y;
+var i,j,x,y,h,w;
 var board;
 function ondown(event){
     var status;
     x = event.clientX - cvs.offsetLeft;
     y = event.clientY - cvs.offsetTop;
-    i = Math.floor(x / length);
-    j = Math.floor(y / length);
-    status = board[i][j];
+    w = Math.floor(x / length);
+    h = Math.floor(y / length);
+    status = board[h][w];
     var statusE = document.getElementById("status");
     statusE.textContent = 'i:'+i.toString()+' j:'+j.toString()+' status:' + status.toString();
 }
 function onup(event){
-    
+    if(board[h][w] != 10){
+        board[h][w] = 1;
+        draw();
+    }
 }
 cvs.addEventListener("mousedown",ondown,false);
 cvs.addEventListener("mouseup",onup,false);
@@ -33,8 +36,8 @@ function draw(){
     context　= cvs.getContext("2d");
     context.fillStyle = "black";
     context.fillRect(0,0,length*(width+2),length*(height*2));
-    for(i=1;i<height;i++){
-        for(j=1;j<width;j++){
+    for(i=1;i<height+1;i++){
+        for(j=1;j<width+1;j++){
             if(board[i][j] == 0){
                 context.drawImage(base,length*(j),length*(i));
             }
