@@ -1,7 +1,7 @@
 var cvs = document.getElementById("minesweeper");
 var context　= cvs.getContext("2d");
-context.fillStyle = "blue";
-context.fillRect(0,0,440,440);
+//context.fillStyle = "blue";
+//context.fillRect(0,0,440,440);
 var base = new Image();
 var ground = new Image();
 var flag = new Image();
@@ -17,8 +17,8 @@ function ondown(event){
     var status;
     x = event.clientX - cvs.offsetLeft;
     y = event.clientY - cvs.offsetTop;
-    i = x % length;
-    j = y % length;
+    i = Math.floor(x / length);
+    j = Math.floor(y / length);
     status = board[i][j];
     var statusE = document.getElementById("status");
     statusE.textContent = 'i:'+i.toString()+' j:'+j.toString()+' status:' + status.toString();
@@ -36,10 +36,10 @@ function draw(){
     for(i=1;i<height;i++){
         for(j=1;j<width;j++){
             if(board[i][j] == 0){
-                context.drawImage(base,length*(i+1),length*(j+1));
+                context.drawImage(base,length*(j),length*(i));
             }
             else if(board[i][j] == 1){
-                context.drawImage(ground,length*(i+1),length*(j+1));
+                context.drawImage(ground,length*(j),length*(i));
             }
         }
     }
