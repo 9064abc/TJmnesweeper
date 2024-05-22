@@ -20,6 +20,8 @@ function ondown(event){
     i = x % length;
     j = y % length;
     status = board[i][j];
+    var statusE = document.getElementById("status");
+    statusE.textContent = 'i:'+i.toString()+' j:'+j.toString()+' status:' + status.toString()
 }
 function onup(event){
     
