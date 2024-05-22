@@ -15,13 +15,13 @@ var i,j,x,y;
 var board;
 function ondown(event){
     var status;
-    x = event.clientX - canvas.offsetLeft;
-    y = event.clientY - canvas.offsetTop;
+    x = event.clientX - cvs.offsetLeft;
+    y = event.clientY - cvs.offsetTop;
     i = x % length;
     j = y % length;
     status = board[i][j];
     var statusE = document.getElementById("status");
-    statusE.textContent = 'i:'+i.toString()+' j:'+j.toString()+' status:' + status.toString()
+    statusE.textContent = 'i:'+i.toString()+' j:'+j.toString()+' status:' + status.toString();
 }
 function onup(event){
     
@@ -45,6 +45,8 @@ function draw(){
     }
 }
 function reset(){
+    cvs.height = length*(height+2);
+    cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(0));
     for(i=0;i<height+2;i++){
         board[i][0] = 10;
