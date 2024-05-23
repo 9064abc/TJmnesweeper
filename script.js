@@ -57,9 +57,9 @@ function reset(){
     width = document.getElementById("width");
     height = document.getElementById("height");
     mine = document.getElementById("mine");
-    width = width.value;
-    height = height.value;
-    mine = mine.value;
+    width = Number(width.value);
+    height = Number(height.value);
+    mine = Number(mine.value);
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(0));
