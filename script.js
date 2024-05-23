@@ -10,18 +10,22 @@ base.src = "base.png";
 ground.src = "ground.png";
 var width = 12;
 var height = 9;
+var mine;
 var length = 40;
-var i,j,x,y,h,w;
+var i,j,x,y,h,w,c;
 var board;
 function ondown(event){
     var status;
+    if(c == 0){
+        
+    }
     x = event.clientX - cvs.offsetLeft;
     y = event.clientY - cvs.offsetTop;
     w = Math.floor(x / length);
     h = Math.floor(y / length);
     status = board[h][w];
     var statusE = document.getElementById("status");
-    statusE.textContent = 'i:'+i.toString()+' j:'+j.toString()+' status:' + status.toString();
+    statusE.textContent = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
 }
 function onup(event){
     if(board[h][w] != 10){
@@ -48,9 +52,16 @@ function draw(){
     }
 }
 function reset(){
+    width = document.getElementById("width");
+    height = document.getElementById("height");
+    mine = document.getElementById("mine");
+    width = width.value;
+    height = height.value;
+    mine = mine.value;
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(0));
+    c = 0;
     for(i=0;i<height+2;i++){
         board[i][0] = 10;
         board[i][width+1] = 10;
