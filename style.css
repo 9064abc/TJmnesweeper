@@ -8,3 +8,6 @@ body{
   top: 150px;
   left: 30px;
 }
+#input{
+  display: flex;
+}
