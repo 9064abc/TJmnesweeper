@@ -8,6 +8,8 @@ var flag = new Image();
 //flag.src = "logo_url";
 base.src = "base.png";
 ground.src = "ground.png";
+var rbutton = document.getElementById("reset");
+
 var width = 12;
 var height = 9;
 var mine;
@@ -72,4 +74,5 @@ function reset(){
     }
     draw();
 }
-base.onload = function(){reset();}
+//base.onload = function(){reset();}
+rbutton.addEventListener("click",reset);
