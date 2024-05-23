@@ -74,5 +74,5 @@ function reset(){
     }
     draw();
 }
-//base.onload = function(){reset();}
+base.onload = function(){reset();}
 rbutton.addEventListener("click",reset);
