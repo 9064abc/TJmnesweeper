@@ -117,8 +117,8 @@ function reset(){
         mine.value = Math.floor(width*height/5).toString();
     }
     mine = Number(mine.value);
-    cvs.height = length*(h+2);
-    cvs.width = length*(w+2);
+    cvs.height = length*(height+2);
+    cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(-1));
 
 
