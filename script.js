@@ -22,11 +22,11 @@ var board;
 
 function ondown(event){
     var status;
-    status = board[h][w];
     x = event.clientX - cvs.offsetLeft;
     y = event.clientY - cvs.offsetTop;
     w = Math.floor(x / length);
     h = Math.floor(y / length);
+    status = board[h][w];
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
 
@@ -66,7 +66,7 @@ function ondown(event){
 }
 function onup(event){
     if(board[h][w] != 10){
-        
+        return 0;
     }
 }
 
