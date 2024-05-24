@@ -39,9 +39,9 @@ function ondown(event){
             l = Mine.length;
             for(i=0;i<l;i++){
                 var random = Math.floor(Math.random()*l);
-                tmp = [...Mine[i]];
-                Mine[i] = [...Mine[random]];
-                Mine[tmp] = [...tmp];
+                tmp = Array.from(Mine[i]);
+                Mine[i] = Array.from(Mine[random]);
+                Mine[tmp] = Array.from(tmp);
             }
             tmp = mine;
             mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));;
