@@ -34,7 +34,8 @@ function ondown(event){
     if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
             //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
-            Mine.splice(index,(h-1)*width + w);
+            //Mine.splice(index,(h-1)*width + w);
+            delete Mine[(h-1)*width + w - 1]
             l = Mine.length;
             for(i=0;i<l;i++){
                 var random = Math.floor(Math.random()*l);
