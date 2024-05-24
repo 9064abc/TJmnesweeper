@@ -40,7 +40,7 @@ function ondown(event){
             for(i=0;i<l;i++){
                 var random = Math.floor(Math.random()*l);
                 tmp = [...Mine[i]];
-                Mine[i] = [...Mine[ramdom]];
+                Mine[i] = [...Mine[random]];
                 Mine[tmp] = [...tmp];
             }
             tmp = mine;
