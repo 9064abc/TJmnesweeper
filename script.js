@@ -67,9 +67,10 @@ function ondown(event){
             }
             c += 1;
         }
-
+        w = Math.floor(x / length);
+        h = Math.floor(y / length);
         
-        board[h][w] = 1;
+        board[h][w] *= -1;
         if(mine[h][w] == 1){
             game_status = 0;
             texttmp += "  Game Over";
