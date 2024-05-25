@@ -18,7 +18,7 @@ var length = 40;
 var game_status = 0;
 var i,j,x,y,h,w,c,l,tmp,texttmp;
 var board;
-
+var textcolor = ["#FFFFFF","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
 
 function ondown(event){
     var status;
@@ -98,19 +98,17 @@ function draw(){
     context.clearRect(0,0,cvs.width,cvs.height);
     //context　= cvs.getContext("2d");
     context.fillStyle = "black";
-    //width = document.getElementById("width");
-    //height = document.getElementById("height");
-    //mine = document.getElementById("mine");
-    //w = Number(width.value);
-    //h = Number(height.value);
     context.fillRect(0,0,length*(width+2),length*(height*2));
     for(i=1;i<height+1;i++){
         for(j=1;j<width+1;j++){
-            if(board[i][j] == -1){
+            if(board[i][j] < 0){
                 context.drawImage(base,length*(j),length*(i));
             }
-            else if(board[i][j] == 1){
+            else if(board[i][j] > 0){
                 context.drawImage(ground,length*(j),length*(i));
+                context.fillStyle = textcolor[board[i][j]-1];
+                context.font = (length-4).toString() + " Arial";
+                context.filltext((board[i][j]-1).toString(),length*j+2,length*i+2)
             }
         }
     }
