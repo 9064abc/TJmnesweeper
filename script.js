@@ -52,6 +52,19 @@ function ondown(event){
             for(i=0;i<tmp;i++){
                 mine[Mine[i][0]][Mine[i][1]] = 1;
             }
+            for(i=1;i<height+1;i++){
+                for(j=1;j<width+1;j++){
+                    c = 0;
+                    for(h=-1;h<2;h++){
+                        for(w=-1;w<2;w++){
+                            if(mine[i+h][j+w] = 1){
+                                c += 1;
+                            }
+                        }
+                    }
+                    board[i][j] *= (c+1);
+                }
+            }
             c += 1;
         }
 
