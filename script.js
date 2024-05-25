@@ -40,8 +40,10 @@ function ondown(event){
             for(i=0;i<l;i++){
                 var random = Math.floor(Math.random()*l);
                 tmp = Array.from(Mine[i]);
-                Mine[i] = Array.from(Mine[random]);
-                Mine[tmp] = Array.from(tmp);
+                Mine[i][0] = Mine[random][0];
+                Mine[i][1] =Mine[random][1];
+                Mine[random][0] = tmp[0];
+                Mine[random][1] = tmp[1];
             }
             tmp = mine;
             mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));;
