@@ -35,11 +35,13 @@ function ondown(event){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
             //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
             //Mine.splice(index,(h-1)*width + w);
-            delete Mine[(h-1)*width + w - 1]
+            delete Mine[(h-1)*width + w - 1];
             l = Mine.length;
+            tmp = [0,0];
             for(i=0;i<l;i++){
                 var random = Math.floor(Math.random()*l);
-                tmp = Array.from(Mine[i]);
+                tmp[0] = Mine[i][0];
+                tmp[1] = Mine[i][1];
                 Mine[i][0] = Mine[random][0];
                 Mine[i][1] =Mine[random][1];
                 Mine[random][0] = tmp[0];
