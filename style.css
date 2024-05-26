@@ -11,3 +11,7 @@ body{
 #input{
   display: flex;
 }
+#i{
+  display: flex;
+  flex-direction: column;
+}
