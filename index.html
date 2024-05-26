@@ -7,12 +7,18 @@
 </head>
 <body>
     <div id="input">
-        <input type="number" id="width" min="6" max="150" value="9"/>
-        <label for="width">width</label>
-        <input type="number" id="height" min="6" max="150" value="9"/>
-        <label for="height">height</label>
-        <input type="number" id="mine" min="1" max="10000" value="9"/>
-        <label for="mine">mine</label>
+        <div id="i">
+            <label for="width">width</label>
+            <input type="number" id="width" min="6" max="150" value="9"/>
+        </div>
+        <div id="i">
+            <label for="height">height</label>
+            <input type="number" id="height" min="6" max="150" value="9"/>
+        </div>
+        <div id="i">
+            <label for="mine">mine</label>
+            <input type="number" id="mine" min="1" max="10000" value="9"/>
+        </div>
         <button id="reset" type="button">reset</button>
     </div>
     <canvas id="minesweeper" width="440" height="440">
