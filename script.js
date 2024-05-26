@@ -111,7 +111,7 @@ function draw(){
             else if(board[i][j] > 0){
                 context.drawImage(ground,length*(j),length*(i));
                 context.fillStyle = textcolor[board[i][j]-1];
-                context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+5);
+                context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
             }
         }
     }
