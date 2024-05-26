@@ -100,6 +100,9 @@ function draw(){
     //context　= cvs.getContext("2d");
     context.fillStyle = "black";
     context.fillRect(0,0,length*(width+2),length*(height*2));
+    context.textBaseline = "top";
+    context.textAlign = "left";
+    context.font = (length-4).toString() + "px Arial";
     for(i=1;i<height+1;i++){
         for(j=1;j<width+1;j++){
             if(board[i][j] < 0){
@@ -108,7 +111,6 @@ function draw(){
             else if(board[i][j] > 0){
                 context.drawImage(ground,length*(j),length*(i));
                 context.fillStyle = textcolor[board[i][j]-1];
-                context.font = (length-4).toString() + "px Arial";
                 context.fillText((board[i][j]-1).toString(),length*j+2,length*i+2);
             }
         }
