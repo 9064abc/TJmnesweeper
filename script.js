@@ -19,7 +19,15 @@ var game_status = 0;
 var i,j,x,y,h,w,c,l,tmp,texttmp;
 var board;
 var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
-
+function open(h,w){
+    tmp = [[h,w]];
+    for(i of tmp){
+        if(board[i[0]][i[1]] == -1){
+            board[i[0]][i[1]] = 1
+        }
+    }
+    
+}
 function ondown(event){
     var status;
     x = event.pageX - cvs.offsetLeft;
@@ -52,7 +60,7 @@ function ondown(event){
             for(i=0;i<tmp;i++){
                 mine[Mine[i][0]][Mine[i][1]] = 1;
             }
-            for(i=1;i<height+1;i++){
+            for(i=1;i<height+1;i++){  //周囲の地雷の数
                 for(j=1;j<width+1;j++){
                     c = 0;
                     for(h=-1;h<2;h++){
