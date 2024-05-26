@@ -22,8 +22,8 @@ var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#5
 
 function ondown(event){
     var status;
-    x = event.clientX - cvs.offsetLeft;
-    y = event.clientY - cvs.offsetTop;
+    x = event.pageX - cvs.offsetLeft;
+    y = event.pageY - cvs.offsetTop;
     w = Math.floor(x / length);
     h = Math.floor(y / length);
     status = board[h][w];
