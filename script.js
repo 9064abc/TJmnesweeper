@@ -108,7 +108,7 @@ function draw(){
             else if(board[i][j] > 0){
                 context.drawImage(ground,length*(j),length*(i));
                 context.fillStyle = textcolor[board[i][j]-1];
-                context.font = (length-4).toString() + " Arial";
+                context.font = (length-4).toString() + "px Arial";
                 context.fillText((board[i][j]-1).toString(),length*j+2,length*i+2)
             }
         }
