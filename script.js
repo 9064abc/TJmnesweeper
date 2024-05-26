@@ -18,7 +18,7 @@ var length = 40;
 var game_status = 0;
 var i,j,x,y,h,w,c,l,tmp,texttmp;
 var board;
-var textcolor = ["#FFFFFF","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
+var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
 
 function ondown(event){
     var status;
@@ -100,8 +100,8 @@ function draw(){
     //context　= cvs.getContext("2d");
     context.fillStyle = "black";
     context.fillRect(0,0,length*(width+2),length*(height*2));
-    context.textBaseline = "top";
-    context.textAlign = "left";
+    context.textBaseline = "middle";
+    context.textAlign = "center";
     context.font = (length-4).toString() + "px Arial";
     for(i=1;i<height+1;i++){
         for(j=1;j<width+1;j++){
@@ -111,7 +111,7 @@ function draw(){
             else if(board[i][j] > 0){
                 context.drawImage(ground,length*(j),length*(i));
                 context.fillStyle = textcolor[board[i][j]-1];
-                context.fillText((board[i][j]-1).toString(),length*j+2,length*i+2);
+                context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2);
             }
         }
     }
