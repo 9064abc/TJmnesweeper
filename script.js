@@ -48,7 +48,7 @@ function ondown(event){
                 Mine[random][1] = tmp[1];
             }
             tmp = mine;
-            mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));;
+            mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));
             for(i=0;i<tmp;i++){
                 mine[Mine[i][0]][Mine[i][1]] = 1;
             }
@@ -109,7 +109,7 @@ function draw(){
                 context.drawImage(ground,length*(j),length*(i));
                 context.fillStyle = textcolor[board[i][j]-1];
                 context.font = (length-4).toString() + "px Arial";
-                context.fillText((board[i][j]-1).toString(),length*j+2,length*i+2)
+                context.fillText((board[i][j]-1).toString(),length*j+2,length*i+2);
             }
         }
     }
