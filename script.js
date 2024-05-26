@@ -57,7 +57,7 @@ function ondown(event){
                     c = 0;
                     for(h=-1;h<2;h++){
                         for(w=-1;w<2;w++){
-                            if(mine[i+h][j+w] = 1){
+                            if(mine[i+h][j+w] == 1){
                                 c += 1;
                             }
                         }
