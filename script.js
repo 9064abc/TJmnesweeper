@@ -20,19 +20,20 @@ var i,j,x,y,h,w,c,l,tmp,texttmp;
 var board;
 var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
 function open(h,w){
-    tmp = [[h,w]];
-    tmp.forEach(function(i){
-        if(board[i[0]][i[1]] == 1){
-            for(h=-1;h<2;h++){
-                for(w=-1;w<2;w++){
-                    if(board[i[0]+h][i[1]+w] < 0){
-                        board[i[0]+h][i[1]+w] = Math.abs(board[i[0]+h][i[1]+w]);
-                        tmp.push([i[0]+h,i[1]+w]);
-                    }
+    //tmp = [[h,w]];
+    //tmp.forEach(function(i){
+    if(board[h][w] == 1){
+        for(i=-1;i<2;i++){
+            for(j=-1;j<2;j++){
+                if(board[h+i][w+j] < 0){
+                    board[h+i][w+j] = Math.abs(board[h+i][w+j]);
+                    open(h+i,w+j);
+                    //tmp.push([i[0]+h,i[1]+w]);
                 }
             }
         }
-    });
+    }
+    //});
     //board[tmp[0][0],tmp[0][1]] *= -1;
 }
 function ondown(event){
