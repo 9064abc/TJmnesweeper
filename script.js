@@ -21,12 +21,16 @@ var board;
 var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
 function open(h,w){
     tmp = [[h,w]];
-    for(i of tmp){
-        if(board[i[0]][i[1]] == -1){
-            board[i[0]][i[1]] = 1
+    tmp.forEach(function(i){
+        if(board[i[0]][i[1]] == 1){
+            for(h=-1;h<2;h++){
+                for(w=-1;w<2;w++){
+                    board[i[0]+h][i[0]+w] *= -1;
+                    tmp.push([h,w]);
+                }
+            }
         }
-    }
-    
+    });    
 }
 function ondown(event){
     var status;
@@ -79,9 +83,13 @@ function ondown(event){
         h = Math.floor(y / length);
         
         board[h][w] *= -1;
+        
         if(mine[h][w] == 1){
             game_status = 0;
             texttmp += "  Game Over";
+        }
+        else if(board[h][w] == 1){
+            open(h,w);
         }
         draw();
     }
