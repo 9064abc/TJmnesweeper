@@ -22,12 +22,13 @@ var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#5
 function open(h,w){
     //tmp = [[h,w]];
     //tmp.forEach(function(i){
+    var k,l
     if(board[h][w] == 1){
-        for(i=-1;i<2;i++){
-            for(j=-1;j<2;j++){
-                if(board[h+i][w+j] < 0){
-                    board[h+i][w+j] = Math.abs(board[h+i][w+j]);
-                    open(h+i,w+j);
+        for(k=-1;k<2;k++){
+            for(l=-1;l<2;l++){
+                if(board[h+k][w+l] < 0){
+                    board[h+k][w+l] = Math.abs(board[h+k][w+l]);
+                    open(h+k,w+l);
                     //tmp.push([i[0]+h,i[1]+w]);
                 }
             }
