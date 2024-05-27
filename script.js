@@ -134,7 +134,7 @@ function draw(){
                 context.fillStyle = textcolor[board[i][j]-1];
                 context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
             }
-            if(mine[i][j] == 1 && c!=0){
+            if(c!=0 && mine[i][j] == 1){
                 context.drawImage(flag,length*(j),length*(i));
             }
         }
