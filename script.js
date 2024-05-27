@@ -25,8 +25,10 @@ function open(h,w){
         if(board[i[0]][i[1]] == 1){
             for(h=-1;h<2;h++){
                 for(w=-1;w<2;w++){
-                    board[i[0]+h][i[0]+w] *= -1;
-                    tmp.push([h,w]);
+                    if(board[i[0]+h][i[0]+w] < 0){
+                        board[i[0]+h][i[0]+w] *= -1;
+                        tmp.push([h,w]);
+                    }
                 }
             }
         }
