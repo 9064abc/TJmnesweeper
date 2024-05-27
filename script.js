@@ -30,7 +30,8 @@ function open(h,w){
                 }
             }
         }
-    });    
+    });
+    board[tmp[0][0],tmp[0][1]] *= -1;
 }
 function ondown(event){
     var status;
