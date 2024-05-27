@@ -9,7 +9,7 @@ var flag = new Image();
 //flag.src = "logo_url";
 base.src = "base.png";
 ground.src = "ground.png";
-
+flag.src = "flag.png";
 
 var width = 12;
 var height = 9;
@@ -116,11 +116,11 @@ cvs.addEventListener("mouseup",onup,false);
 
 
 function draw(){
-    //cvs = document.getElementById("minesweeper");
     context.clearRect(0,0,cvs.width,cvs.height);
-    //context　= cvs.getContext("2d");
     context.fillStyle = "black";
     context.fillRect(0,0,length*(width+2),length*(height*2));
+
+    
     context.textBaseline = "middle";
     context.textAlign = "center";
     context.font = (length-4).toString() + "px Arial";
@@ -133,6 +133,9 @@ function draw(){
                 context.drawImage(ground,length*(j),length*(i));
                 context.fillStyle = textcolor[board[i][j]-1];
                 context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
+            }
+            if(mine[i][j] == 1 && c!=0){
+                context.drawImage(flag,length*(j),length*(i));
             }
         }
     }
@@ -182,5 +185,5 @@ function reset(){
 }
 
 
-base.onload = function(){reset();}
+flag.onload = function(){reset();}
 rbutton.addEventListener("click",reset);
