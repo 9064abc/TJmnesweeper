@@ -135,7 +135,7 @@ function draw(){
                 context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
             }
             if(c!=0 && mine[i][j] == 1){
-                context.drawImage(flag,length*(j),length*(i));
+                context.drawImage(flag,length*(j)+6,length*(i)+6);
             }
         }
     }
