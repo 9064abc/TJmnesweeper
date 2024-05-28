@@ -98,6 +98,9 @@ function ondown(event){
         }
         draw();
     }
+    else if(game_status != 0 && board[h][w] != 10){
+        draw();
+    }
     else if(game_status == 0){
         texttmp += "  Game Over";
     }
@@ -135,7 +138,7 @@ function draw(){
                 context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
             }
             if(c!=0 && mine[i][j] == 1){
-                context.drawImage(flag,length*(j)+6,length*(i)+6);
+                context.drawImage(flag,length*(j)+4,length*(i)+4);
             }
         }
     }
@@ -163,7 +166,7 @@ function reset(){
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(-1));
-
+    Flag = Array(height+2).fill().map(() => Array(width+2).fill(-1))
 
     for(i=0;i<height+2;i++){
         board[i][0] = 10;
