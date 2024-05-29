@@ -16,6 +16,7 @@ var height = 9;
 var mine,Flag,Mine;
 var length = 40;
 var game_status = 0;
+var long_press = 0;
 var i,j,x,y,h,w,c,l,tmp,texttmp;
 var board;
 var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
@@ -48,7 +49,7 @@ function ondown(event){
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
 
     
-    if(board[h][w]<0 && game_status==1){
+    /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
             //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
             Mine.splice((h-1)*width + w - 1,1);
@@ -105,10 +106,69 @@ function ondown(event){
         texttmp += "  Game Over";
     }
     var statusE = document.getElementById("status");
-    statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+    statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();*/
 }
 function onup(event){
-    if(board[h][w] != 10){
+    if(long_press == 0){
+        if(board[h][w]<0 && game_status==1){
+        if(c == 0){
+          //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
+            Mine.splice((h-1)*width + w - 1,1);
+            //delete Mine[(h-1)*width + w - 1];
+            l = Mine.length;
+            tmp = [0,0];
+            for(i=0;i<l;i++){
+                var random = Math.floor(Math.random()*l);
+                tmp[0] = Mine[i][0];
+                tmp[1] = Mine[i][1];
+                Mine[i][0] = Mine[random][0];
+                Mine[i][1] =Mine[random][1];
+                Mine[random][0] = tmp[0];
+                Mine[random][1] = tmp[1];
+            }
+            tmp = mine;
+            mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));
+            for(i=0;i<tmp;i++){
+                mine[Mine[i][0]][Mine[i][1]] = 1;
+            }
+            for(i=1;i<height+1;i++){  //周囲の地雷の数
+                for(j=1;j<width+1;j++){
+                    c = 0;
+                    for(h=-1;h<2;h++){
+                        for(w=-1;w<2;w++){
+                            if(mine[i+h][j+w] == 1){
+                                c += 1;
+                            }
+                        }
+                    }
+                    board[i][j] *= (c+1);
+                }
+            }
+            c += 1;
+        }
+        w = Math.floor(x / length);
+        h = Math.floor(y / length);
+        
+        board[h][w] *= -1;
+        
+        if(mine[h][w] == 1){
+            game_status = 0;
+            texttmp += "  Game Over";
+        }
+        else if(board[h][w] == 1){
+            open(h,w);
+        }
+        draw();
+    }
+    else if(game_status != 0 && board[h][w] != 10){
+        draw();
+    }
+    else if(game_status == 0){
+        texttmp += "  Game Over";
+    }
+    var statusE = document.getElementById("status");
+    statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+
         return 0;
     }
 }
