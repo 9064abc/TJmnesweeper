@@ -47,7 +47,7 @@ function ondown(event){
     status = board[h][w];
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
-
+    
     
     /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
@@ -111,65 +111,64 @@ function ondown(event){
 function onup(event){
     if(long_press == 0){
         if(board[h][w]<0 && game_status==1){
-        if(c == 0){
-          //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
-            Mine.splice((h-1)*width + w - 1,1);
-            //delete Mine[(h-1)*width + w - 1];
-            l = Mine.length;
-            tmp = [0,0];
-            for(i=0;i<l;i++){
-                var random = Math.floor(Math.random()*l);
-                tmp[0] = Mine[i][0];
-                tmp[1] = Mine[i][1];
-                Mine[i][0] = Mine[random][0];
-                Mine[i][1] =Mine[random][1];
-                Mine[random][0] = tmp[0];
-                Mine[random][1] = tmp[1];
-            }
-            tmp = mine;
-            mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));
-            for(i=0;i<tmp;i++){
-                mine[Mine[i][0]][Mine[i][1]] = 1;
-            }
-            for(i=1;i<height+1;i++){  //周囲の地雷の数
-                for(j=1;j<width+1;j++){
-                    c = 0;
-                    for(h=-1;h<2;h++){
-                        for(w=-1;w<2;w++){
-                            if(mine[i+h][j+w] == 1){
-                                c += 1;
+            if(c == 0){
+                //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
+                Mine.splice((h-1)*width + w - 1,1);
+                //delete Mine[(h-1)*width + w - 1];
+                l = Mine.length;
+                tmp = [0,0];
+                for(i=0;i<l;i++){
+                    var random = Math.floor(Math.random()*l);
+                    tmp[0] = Mine[i][0];
+                    tmp[1] = Mine[i][1];
+                    Mine[i][0] = Mine[random][0];
+                    Mine[i][1] =Mine[random][1];
+                    Mine[random][0] = tmp[0];
+                    Mine[random][1] = tmp[1];
+                }
+                tmp = mine;
+                mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));
+                for(i=0;i<tmp;i++){
+                    mine[Mine[i][0]][Mine[i][1]] = 1;
+                }
+                for(i=1;i<height+1;i++){  //周囲の地雷の数
+                    for(j=1;j<width+1;j++){
+                        c = 0;
+                        for(h=-1;h<2;h++){
+                            for(w=-1;w<2;w++){
+                                if(mine[i+h][j+w] == 1){
+                                    c += 1;
+                                }
                             }
                         }
+                        board[i][j] *= (c+1);
                     }
-                    board[i][j] *= (c+1);
                 }
+                c += 1;
+                w = Math.floor(x / length);
+                h = Math.floor(y / length);
             }
-            c += 1;
+            board[h][w] *= -1;
+        
+            if(mine[h][w] == 1){
+                game_status = 0;
+                texttmp += "  Game Over";
+            }
+            else if(board[h][w] == 1){
+                open(h,w);
+            }
+            draw();
         }
-        w = Math.floor(x / length);
-        h = Math.floor(y / length);
-        
-        board[h][w] *= -1;
-        
-        if(mine[h][w] == 1){
-            game_status = 0;
+        else if(game_status != 0 && board[h][w] != 10){
+            draw();
+        }
+        else if(game_status == 0){
             texttmp += "  Game Over";
         }
-        else if(board[h][w] == 1){
-            open(h,w);
-        }
-        draw();
-    }
-    else if(game_status != 0 && board[h][w] != 10){
-        draw();
-    }
-    else if(game_status == 0){
-        texttmp += "  Game Over";
-    }
-    var statusE = document.getElementById("status");
-    statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
-
-        return 0;
+        var statusE = document.getElementById("status");
+        statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+    }else{
+        Flag[h][w] *= -1;
     }
 }
 
@@ -197,8 +196,11 @@ function draw(){
                 context.fillStyle = textcolor[board[i][j]-1];
                 context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
             }
-            if(c!=0 && mine[i][j] == 1){
+            /*if(c!=0 && mine[i][j] == 1){
                 context.drawImage(flag,length*(j)+4,length*(i)+4);
+            }*/
+            if(Flag[i][j] == 1){
+                context.drawImage(flag,length*j+4,length*i+4);
             }
         }
     }
