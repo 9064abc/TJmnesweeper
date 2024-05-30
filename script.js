@@ -51,9 +51,10 @@ function ondown(event){
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
     this.addEventListener("mouseup",onup,false);
-    interval_id = setInterval(() => {count+=1;if(count>50){clearInterval(interval_id);long_press=1;}},10);
+    interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;clearInterval(interval_id);}},10);
     if(long_press == 1){
         Flag[h][w] *= -1;
+        draw();
     }
     /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
