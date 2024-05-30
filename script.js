@@ -188,7 +188,7 @@ function draw(){
             }
         }
     }
-    if(judge()){
+    if(c!=0 && judge()){
         game_status == 0;
         var statusE = document.getElementById("status");
         statusE.textContent += "  CLEAR";
