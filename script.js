@@ -39,6 +39,18 @@ function open(h,w){
     //});
     //board[tmp[0][0],tmp[0][1]] *= -1;
 }
+function press_length(count){
+    count += 1;
+    if(count>50){
+        long_press = 1;
+        Flag[h][w] *= -1;
+        draw();
+    }else if(long_press == 1){
+        return 0;
+    }else{
+        setTimeout(press_length(count),10);
+    }
+}
 function ondown(event){
     var status;
     x = event.pageX - cvs.offsetLeft;
@@ -51,8 +63,9 @@ function ondown(event){
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
     this.addEventListener("mouseup",onup,false);
-    interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;Flag[h][w]*=-1;clearInterval(interval_id);}},10);
-    draw();
+    //interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;Flag[h][w]*=-1;clearInterval(interval_id);}},10);
+    //draw();
+    press_length(0);
     /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
             //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
@@ -113,8 +126,9 @@ function ondown(event){
     statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();*/
 }
 function onup(event){
-    clearInterval(interval_id);
+    //clearInterval(interval_id);
     if(long_press == 0){
+        long_press == 1;
         if(board[h][w]<0 && game_status==1){
             if(c == 0){
                 //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
