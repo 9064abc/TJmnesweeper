@@ -127,8 +127,8 @@ function onup(event){
                 h = Math.floor(y / length);
             }
             board[h][w] *= -1;
-            for(h=-1;h<2;h++){
-                for(w=-1;w<2;w++){
+            for(i=-1;i<2;i++){
+                for(j=-1;j<2;j++){
                     if(mine[i+h][j+w] == 1){
                         count += 1;
                     }
