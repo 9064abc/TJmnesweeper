@@ -41,17 +41,10 @@ function open(h,w){
 }
 function press_length(count){
     
-    count += 1;
-    if(count>200){
-        long_press = 1;
-        Flag[h][w] *= -1;
-        draw();
-    }else if(long_press == 1){
-        return 0;
-    }else{
-        interval_id = setTimeout(press_length(count),10);
-    }
-    this.addEventListener("mouseup",onup,{once: true});
+    long_press = 1;
+    Flag[h][w] *= -1;
+    draw();
+    //this.addEventListener("mouseup",onup,{once: true});
     
 }
 function ondown(event){
@@ -65,10 +58,10 @@ function ondown(event){
     count = 0;
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
-    //this.addEventListener("mouseup",onup,false);
+    this.addEventListener("mouseup",onup,false);
     //interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;Flag[h][w]*=-1;clearInterval(interval_id);}},10);
     //draw();
-    press_length(0);
+    interval_id=setTimeout(press_length(0),2000);
     /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
             //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
