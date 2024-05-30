@@ -47,6 +47,7 @@ function ondown(event){
     h = Math.floor(y / length);
     status = board[h][w];
     long_press = 0;
+    count = 0;
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
     this.addEventListener("mouseup",onup,false);
