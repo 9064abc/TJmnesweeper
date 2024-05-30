@@ -138,7 +138,7 @@ function onup(event){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
-            else if(board[h][w] == count){
+            else if(board[h][w] == count+1){
                 open(h,w);
             }
             draw();
