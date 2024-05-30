@@ -40,6 +40,7 @@ function open(h,w){
     //board[tmp[0][0],tmp[0][1]] *= -1;
 }
 function press_length(count){
+    this.addEventListener("mouseup",onup,false);
     count += 1;
     if(count>50){
         long_press = 1;
