@@ -17,7 +17,8 @@ var mine,Flag,Mine;
 var length = 40;
 var game_status = 0;
 var long_press = 0;
-var i,j,x,y,h,w,c,l,tmp,texttmp;
+var interval_id;
+var i,j,x,y,h,w,c,count,l,tmp,texttmp;
 var board;
 var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
 function open(h,w){
@@ -45,10 +46,13 @@ function ondown(event){
     w = Math.floor(x / length);
     h = Math.floor(y / length);
     status = board[h][w];
+    long_press = 0;
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
-    
-    
+    interval_id = setInterval(() => {count+=1;if(count>50){clearInterval(interval_id);long_press=1;}},10);
+    if(long_press == 1){
+        Flag[h][w] *= -1;
+    }
     /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
             //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
@@ -109,6 +113,7 @@ function ondown(event){
     statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();*/
 }
 function onup(event){
+    clearInterval(interval_id);
     if(long_press == 0){
         if(board[h][w]<0 && game_status==1){
             if(c == 0){
@@ -167,8 +172,6 @@ function onup(event){
         }
         var statusE = document.getElementById("status");
         statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
-    }else{
-        Flag[h][w] *= -1;
     }
 }
 
