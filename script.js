@@ -61,7 +61,7 @@ function ondown(event){
     
     //interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;Flag[h][w]*=-1;clearInterval(interval_id);}},10);
     //draw();
-    interval_id=setTimeout(press_length(0),2000);
+    interval_id=setTimeout(function(){press_length(0);},2000);
     this.addEventListener("mouseup",onup,false);
     /*if(board[h][w]<0 && game_status==1){
         if(c == 0){ 　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　//地雷生成
