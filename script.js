@@ -40,7 +40,7 @@ function open(h,w){
     //board[tmp[0][0],tmp[0][1]] *= -1;
 }
 function press_length(count){
-    this.addEventListener("mouseup",onup,{once: true});
+    
     count += 1;
     if(count>200){
         long_press = 1;
@@ -51,6 +51,8 @@ function press_length(count){
     }else{
         interval_id = setTimeout(press_length(count),10);
     }
+    this.addEventListener("mouseup",onup,{once: true});
+    
 }
 function ondown(event){
     var status;
