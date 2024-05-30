@@ -49,6 +49,7 @@ function ondown(event){
     long_press = 0;
     //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+    this.addEventListener("mouseup",onup,false);
     interval_id = setInterval(() => {count+=1;if(count>50){clearInterval(interval_id);long_press=1;}},10);
     if(long_press == 1){
         Flag[h][w] *= -1;
@@ -177,7 +178,7 @@ function onup(event){
 
 
 cvs.addEventListener("mousedown",ondown,false);
-cvs.addEventListener("mouseup",onup,false);
+//cvs.addEventListener("mouseup",onup,false);
 
 
 function draw(){
