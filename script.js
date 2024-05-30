@@ -49,7 +49,7 @@ function press_length(count){
     }else if(long_press == 1){
         return 0;
     }else{
-        setTimeout(press_length(count),10);
+        interval_id = setTimeout(press_length(count),10);
     }
 }
 function ondown(event){
@@ -128,6 +128,7 @@ function ondown(event){
 }
 function onup(event){
     //clearInterval(interval_id);
+    clearTimeout(interval_id);
     if(long_press == 0){
         long_press == 1;
         if(board[h][w]<0 && game_status==1){
