@@ -42,7 +42,7 @@ function open(h,w){
 function press_length(count){
     this.addEventListener("mouseup",onup,{once: true});
     count += 1;
-    if(count>50){
+    if(count>200){
         long_press = 1;
         Flag[h][w] *= -1;
         draw();
