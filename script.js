@@ -15,7 +15,7 @@ var width = 12;
 var height = 9;
 var mine,Flag,Mine;
 var length = 40;
-var game_status = 0;
+var game_status = 1;
 var long_press = 0;
 var interval_id;
 var i,j,x,y,h,w,c,count,l,tmp,texttmp;
