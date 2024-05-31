@@ -155,7 +155,8 @@ function onup(event){
                     }
                     //open(h,w);
                 }
-            draw();
+                draw();
+            }
         }
         else if(game_status != 0 && board[h][w] != 10){
             draw();
@@ -231,7 +232,7 @@ function reset(){
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(-1));
-    Flag = Array(height+2).fill().map(() => Array(width+2).fill(-1))
+    Flag = Array(height+2).fill().map(() => Array(width+2).fill(-1));
 
     for(i=0;i<height+2;i++){
         board[i][0] = 10;
@@ -246,7 +247,7 @@ function reset(){
     Mine = [];
     for(i=1;i<height+1;i++){
         for(j=1;j<width+1;j++){
-                Mine.push([i,j])
+                Mine.push([i,j]);
         }
     }
     draw();
