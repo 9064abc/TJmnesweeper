@@ -165,7 +165,6 @@ function onup(event){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
-            }
         }
         
         else if(game_status != 0 && board[h][w] != 10){
