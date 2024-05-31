@@ -37,7 +37,7 @@ function judge(){
 function countmine(h,w){
     for(i=-1;i<2;i++){
         for(j=-1;j<2;j++){
-            if(mine[i+h][j+w] == 1){
+            if(Flag[i+h][j+w] == 1){
                 count += 1;
             }
         }
