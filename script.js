@@ -159,12 +159,13 @@ function onup(event){
                     }
                     //open(h,w);
                 }
-                draw();
+                
             }
             if(mine[h][w] == 1){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
+            draw();
         }
         
         else if(game_status != 0 && board[h][w] != 10){
