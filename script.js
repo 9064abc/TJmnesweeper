@@ -138,25 +138,26 @@ function onup(event){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
-            else if(board[h][w] == count+1){
-                for(k=-1;k<2;k++){
-                    for(l=-1;l<2;l++){
-                        if(board[h+k][w+l] < 0 && Flag[h+k][w+l] < 0){
-                            if(mine[h+k][w+l] == 1){
-                                game_status = -1;
-                                var statusE = document.getElementById("status");
-                                statusE.textContent += "  Game Over";
-                            }else{
-                                board[h+k][w+l] = Math.abs(board[h+k][w+l]);
-                                open(h+k,w+l);
-                                //tmp.push([i[0]+h,i[1]+w]);
-                            }
+            
+        }
+        else if(board[h][w]==count+1 && game_status==1){
+            for(k=-1;k<2;k++){
+                for(l=-1;l<2;l++){
+                    if(board[h+k][w+l] < 0 && Flag[h+k][w+l] < 0){
+                        if(mine[h+k][w+l] == 1){
+                            game_status = -1;
+                            var statusE = document.getElementById("status");
+                            statusE.textContent += "  Game Over";
+                        }else{
+                            board[h+k][w+l] = Math.abs(board[h+k][w+l]);
+                            open(h+k,w+l);
+                            //tmp.push([i[0]+h,i[1]+w]);
                         }
                     }
-                    //open(h,w);
                 }
-                draw();
+                //open(h,w);
             }
+            draw();
         }
         else if(game_status != 0 && board[h][w] != 10){
             draw();
