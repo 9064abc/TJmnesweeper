@@ -88,6 +88,13 @@ function onup(event){
     clearTimeout(interval_id);
     if(long_press == 0){
         long_press == 1;
+        for(i=-1;i<2;i++){
+            for(j=-1;j<2;j++){
+                if(mine[i+h][j+w] == 1){
+                    count += 1;
+                }
+            }
+        }
         if(Flag[h][w]<0 && board[h][w]<0 && game_status==1){
             if(c == 0){
                 //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
@@ -127,13 +134,7 @@ function onup(event){
                 h = Math.floor(y / length);
             }
             board[h][w] *= -1;
-            for(i=-1;i<2;i++){
-                for(j=-1;j<2;j++){
-                    if(mine[i+h][j+w] == 1){
-                        count += 1;
-                    }
-                }
-            }
+            
             if(mine[h][w] == 1){
                 game_status = -1;
                 texttmp += "  Game Over";
