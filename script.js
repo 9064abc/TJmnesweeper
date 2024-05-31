@@ -34,6 +34,19 @@ function judge(){
     } 
     return true;
 }
+function countmine(h,w){
+    for(i=-1;i<2;i++){
+        for(j=-1;j<2;j++){
+            if(mine[i+h][j+w] == 1){
+                count += 1;
+            }
+        }
+    }
+    if(board[h][w] == count+1){
+        return true;
+    }
+    return false;
+}
 function open(h,w){
     //tmp = [[h,w]];
     //tmp.forEach(function(i){
@@ -88,13 +101,7 @@ function onup(event){
     clearTimeout(interval_id);
     if(long_press == 0){
         long_press == 1;
-        for(i=-1;i<2;i++){
-            for(j=-1;j<2;j++){
-                if(mine[i+h][j+w] == 1){
-                    count += 1;
-                }
-            }
-        }
+        
         if(Flag[h][w]<0 && board[h][w]<0 && game_status==1){
             if(c == 0){
                 //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
@@ -141,7 +148,7 @@ function onup(event){
             }
             
         }
-        else if(board[h][w]==count+1 && game_status==1){
+        else if(Flag[h][w]<0 && countmine(h,w) && game_status==1){
             for(k=-1;k<2;k++){
                 for(l=-1;l<2;l++){
                     if(board[h+k][w+l] < 0 && Flag[h+k][w+l] < 0){
