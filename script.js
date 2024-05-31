@@ -102,7 +102,8 @@ function onup(event){
     if(long_press == 0){
         long_press == 1;
         
-        if(Flag[h][w]<0 && board[h][w]<0 && game_status==1){
+        if(Flag[h][w]<0 && game_status==1){
+            
             if(c == 0){
                 //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
                 Mine.splice((h-1)*width + w - 1,1);
@@ -140,33 +141,33 @@ function onup(event){
                 w = Math.floor(x / length);
                 h = Math.floor(y / length);
             }
-            board[h][w] *= -1;
-            
+            board[h][w] = Math.abs(board[h][w]);
+            if(countmine(h,w) && game_status==1){
+                for(k=-1;k<2;k++){
+                    for(l=-1;l<2;l++){
+                        if(board[h+k][w+l] < 0 && Flag[h+k][w+l] < 0){
+                            if(mine[h+k][w+l] == 1){
+                                game_status = -1;
+                                var statusE = document.getElementById("status");
+                                statusE.textContent += "  Game Over";
+                            }else{
+                                board[h+k][w+l] = Math.abs(board[h+k][w+l]);
+                                open(h+k,w+l);
+                                //tmp.push([i[0]+h,i[1]+w]);
+                            }
+                        }
+                    }
+                    //open(h,w);
+                }
+                draw();
+            }
             if(mine[h][w] == 1){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
-            
-        }
-        else if(Flag[h][w]<0 && countmine(h,w) && game_status==1){
-            for(k=-1;k<2;k++){
-                for(l=-1;l<2;l++){
-                    if(board[h+k][w+l] < 0 && Flag[h+k][w+l] < 0){
-                        if(mine[h+k][w+l] == 1){
-                            game_status = -1;
-                            var statusE = document.getElementById("status");
-                            statusE.textContent += "  Game Over";
-                        }else{
-                            board[h+k][w+l] = Math.abs(board[h+k][w+l]);
-                            open(h+k,w+l);
-                            //tmp.push([i[0]+h,i[1]+w]);
-                        }
-                    }
-                }
-                //open(h,w);
             }
-            draw();
         }
+        
         else if(game_status != 0 && board[h][w] != 10){
             draw();
         }
