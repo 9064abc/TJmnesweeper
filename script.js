@@ -22,8 +22,8 @@ var i,j,x,y,h,w,c,count,l,tmp,texttmp;
 var board;
 var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
 function judge(){
-    for(h=0;h<height;h++){
-        for(w=0;w<width;w++){
+    for(h=1;h<height+1;h++){
+        for(w=1;w<width+1;w++){
             if(mine[h][w] == -1 && board[h][w] < 0){
                 return false;
             }
