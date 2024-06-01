@@ -1,12 +1,12 @@
 var cvs = document.getElementById("minesweeper");
 var rbutton = document.getElementById("reset");
 var context　= cvs.getContext("2d");
-//context.fillStyle = "blue";
-//context.fillRect(0,0,440,440);
+
+
 var base = new Image();
 var ground = new Image();
 var flag = new Image();
-//flag.src = "logo_url";
+//minelogo.src = "logo_url";
 base.src = "base.png";
 ground.src = "ground.png";
 flag.src = "flag.png";
@@ -15,8 +15,8 @@ var width = 12;
 var height = 9;
 var mine,Flag,Mine;
 var length = 40;
-var game_status = 1;
-var long_press = 0;
+var game_status = 1;  //1:続行中　0:clear　-1:game over
+var long_press = 0;  
 var interval_id;
 var i,j,x,y,h,w,c,count,l,tmp,texttmp;
 var board;
@@ -62,22 +62,19 @@ function open(h,w){
                     }else{
                         board[h+k][w+l] = Math.abs(board[h+k][w+l]);
                         open(h+k,w+l);
-                        //tmp.push([i[0]+h,i[1]+w]);
                     }
                 }
             }
         }
     }
-    //});
-    //board[tmp[0][0],tmp[0][1]] *= -1;
 }
-function press_length(count){
+function place_flag(){
     
-    long_press = 1;
-    Flag[h][w] *= -1;
-    draw();
-    //this.addEventListener("mouseup",onup,{once: true});
-    
+    long_press = true;
+    if(board[h][w] < 0){
+        Flag[h][w] *= -1;
+        draw();
+    }
 }
 function ondown(event){
     var status;
@@ -86,29 +83,23 @@ function ondown(event){
     w = Math.floor(x / length);
     h = Math.floor(y / length);
     status = board[h][w];
-    long_press = 0;
+    long_press = false;
     count = 0;
-    //var statusE = document.getElementById("status");
     texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+
     
-    //interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;Flag[h][w]*=-1;clearInterval(interval_id);}},10);
-    //draw();
-    interval_id=setTimeout(function(){press_length(0);},400);
+    interval_id = setTimeout(function(){place_flag();},400);
     this.addEventListener("mouseup",onup,false);
     this.addEventListener("touchend",onup,false);
 }
 function onup(event){
     //clearInterval(interval_id);
     clearTimeout(interval_id);
-    if(long_press == 0){
-        long_press == 1;
-        
+    if(long_press == false){
         if(Flag[h][w]<0 && game_status==1){
             
             if(c == 0){
-                //Flag = [...Array((width+2)*(height+2)).map(_,i) => i];
                 Mine.splice((h-1)*width + w - 1,1);
-                //delete Mine[(h-1)*width + w - 1];
                 l = Mine.length;
                 tmp = [0,0];
                 for(i=0;i<l;i++){
@@ -154,11 +145,9 @@ function onup(event){
                             }else{
                                 board[h+k][w+l] = Math.abs(board[h+k][w+l]);
                                 open(h+k,w+l);
-                                //tmp.push([i[0]+h,i[1]+w]);
                             }
                         }
                     }
-                    //open(h,w);
                 }
                 
             }
@@ -166,11 +155,6 @@ function onup(event){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
-            //draw();
-        }
-        
-        else if(game_status != 0 && board[h][w] != 10){
-            //draw();
         }
         else if(game_status == -1){
             texttmp += "  Game Over";
@@ -207,9 +191,6 @@ function draw(){
                 context.fillStyle = textcolor[board[i][j]-1];
                 context.fillText((board[i][j]-1).toString(),length*j+length/2,length*i+length/2+3);
             }
-            /*if(c!=0 && mine[i][j] == 1){
-                context.drawImage(flag,length*(j)+4,length*(i)+4);
-            }*/
             if(Flag[i][j] == 1){
                 context.drawImage(flag,length*j+4,length*i+4);
             }
