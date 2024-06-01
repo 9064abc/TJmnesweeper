@@ -20,7 +20,7 @@ var long_press = 0;
 var interval_id;
 var i,j,x,y,h,w,c,count,l,tmp,texttmp;
 var board;
-var textcolor = ["#B8B6B6","#0000ff","#008000","#ff0000","#191970","#822222","#555555","#555555","#555555"]
+var textcolor = ["#B8B6B6","#0000ff","#008000","#ff0000","#191970","#822222","#008080","#555555","#9400d3"]
 function judge(){
     for(h=1;h<height+1;h++){
         for(w=1;w<width+1;w++){
