@@ -20,7 +20,7 @@ var long_press = 0;
 var interval_id;
 var i,j,x,y,h,w,c,count,l,tmp,texttmp;
 var board;
-var textcolor = ["#B8B6B6","#555555","#555555","#555555","#555555","#555555","#555555","#555555","#555555"]
+var textcolor = ["#B8B6B6","#0000ff","#008000","#ff0000","#191970","#822222","#555555","#555555","#555555"]
 function judge(){
     for(h=1;h<height+1;h++){
         for(w=1;w<width+1;w++){
@@ -37,7 +37,7 @@ function judge(){
 function countmine(h,w){
     for(i=-1;i<2;i++){
         for(j=-1;j<2;j++){
-            if(Flag[i+h][j+w] == 1){
+            if(Flag[h+i][w+j] == 1){
                 count += 1;
             }
         }
@@ -93,7 +93,7 @@ function ondown(event){
     
     //interval_id = setInterval(() => {count+=1;if(count>50){long_press=1;Flag[h][w]*=-1;clearInterval(interval_id);}},10);
     //draw();
-    interval_id=setTimeout(function(){press_length(0);},600);
+    interval_id=setTimeout(function(){press_length(0);},400);
     this.addEventListener("mouseup",onup,false);
     this.addEventListener("touchend",onup,false);
 }
@@ -166,11 +166,11 @@ function onup(event){
                 game_status = -1;
                 texttmp += "  Game Over";
             }
-            draw();
+            //draw();
         }
         
         else if(game_status != 0 && board[h][w] != 10){
-            draw();
+            //draw();
         }
         else if(game_status == -1){
             texttmp += "  Game Over";
@@ -179,6 +179,7 @@ function onup(event){
         }
         var statusE = document.getElementById("status");
         statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+        draw();
     }
 }
 
