@@ -89,8 +89,8 @@ function ondown(event){
 
     
     interval_id = setTimeout(function(){place_flag();},400);
-    this.addEventListener("mouseup",onup,false);
-    this.addEventListener("touchend",onup,false);
+    this.addEventListener("pointerup",onup,false);
+    //this.addEventListener("touchend",onup,false);
 }
 function onup(event){
     //clearInterval(interval_id);
@@ -168,8 +168,8 @@ function onup(event){
 }
 
 
-cvs.addEventListener("mousedown",ondown,false);
-cvs.addEventListener("touchstart",ondown,false);
+cvs.addEventListener("pointerdown",ondown,false);
+//cvs.addEventListener("touchstart",ondown,false);
 
 
 function draw(){
