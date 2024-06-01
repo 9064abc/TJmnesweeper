@@ -95,6 +95,7 @@ function ondown(event){
     //draw();
     interval_id=setTimeout(function(){press_length(0);},600);
     this.addEventListener("mouseup",onup,false);
+    this.addEventListener("touchend",onup,false);
 }
 function onup(event){
     //clearInterval(interval_id);
@@ -183,7 +184,7 @@ function onup(event){
 
 
 cvs.addEventListener("mousedown",ondown,false);
-//cvs.addEventListener("mouseup",onup,false);
+cvs.addEventListener("touchstart",ondown,false);
 
 
 function draw(){
