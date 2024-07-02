@@ -13,7 +13,7 @@ flag.src = "flag.png";
 
 var width = 12;
 var height = 9;
-var mine,Flag,Mine;
+var mine,mineNum,Flag,Mine;
 var length = 40;
 var game_status = 1;  //1:続行中　0:clear　-1:game over
 var long_press = 0;  
@@ -81,10 +81,12 @@ function place_flag(){
         Flag[h][w] *= -1;
         draw();
         if(Flag[h][w] == 1){
-            
+            mineNum -= 1;
+            //makeP(mineNum.toString());
         }else{
-            
+            mineNum += 1;
         }
+        makeP(mineNum.toString());
     }
 }
 function ondown(event){
@@ -232,7 +234,7 @@ function reset(){
     if(Number(mine.value)<1 || Number(mine.value)>Math.floor(width*height/2)){
         mine.value = Math.floor(width*height/5).toString();
     }
-    mine = Number(mine.value);
+    mine,mineNum = Number(mine.value);
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(-1));
