@@ -22,10 +22,10 @@ var i,j,x,y,h,w,c,count,l,tmp,texttmp;
 var board;
 var textcolor = ["#B8B6B6","#0000ff","#008000","#ff0000","#191970","#822222","#008080","#555555","#9400d3"]
 function makeP(S){
-    var el = document.querySelector("#ptag");
-    var p = document.createElement("p");
+    var p = document.querySelector("#num");
+    //var p = document.createElement("p");
     p.textContent = S;
-    el.appendChild(p);
+    //el.appendChild(p);
 }
 function judge(){
     for(h=1;h<height+1;h++){
