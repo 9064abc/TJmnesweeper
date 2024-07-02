@@ -80,6 +80,11 @@ function place_flag(){
     if(board[h][w] < 0){
         Flag[h][w] *= -1;
         draw();
+        if(Flag[h][w] == 1){
+            
+        }else{
+            
+        }
     }
 }
 function ondown(event){
