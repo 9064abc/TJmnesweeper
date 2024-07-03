@@ -100,7 +100,7 @@ function ondown(event){
     status = board[h][w];
     long_press = false;
     count = 0;
-    texttmp = 'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
+    texttmp = 'h:'+h.toString()+' w:'+w.toString()+' status:' + status.toString();
 
     
     interval_id = setTimeout(function(){place_flag();},400);
