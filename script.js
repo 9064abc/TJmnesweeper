@@ -256,6 +256,7 @@ function reset(){
                 Mine.push([i,j]);
         }
     }
+    makeP(mineNum.toString());
     draw();
 }
 
