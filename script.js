@@ -234,6 +234,7 @@ function reset(){
     if(Number(mine.value)<1 || Number(mine.value)>Math.floor(width*height/2)){
         mine.value = Math.floor(width*height/5).toString();
     }
+    makeP(mine.value);
     mineNum = Number(mine.value);
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
@@ -256,7 +257,7 @@ function reset(){
                 Mine.push([i,j]);
         }
     }
-    makeP(mineNum.toString());
+    //makeP(mineNum.toString());
     draw();
 }
 
