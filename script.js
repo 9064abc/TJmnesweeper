@@ -124,9 +124,9 @@ function onup(event){
                     Mine[random][0] = tmp[0];
                     Mine[random][1] = tmp[1];
                 }
-                tmp = mine;
+                //tmp = mine;
                 mine = Array(height+2).fill().map(() => Array(width+2).fill(-1));
-                for(i=0;i<tmp;i++){
+                for(i=0;i<mineNum;i++){
                     mine[Mine[i][0]][Mine[i][1]] = 1;
                 }
                 for(i=1;i<height+1;i++){  //周囲の地雷の数
@@ -234,7 +234,7 @@ function reset(){
     if(Number(mine.value)<1 || Number(mine.value)>Math.floor(width*height/2)){
         mine.value = Math.floor(width*height/5).toString();
     }
-    mine,mineNum = Number(mine.value);
+    mineNum = Number(mine.value);
     cvs.height = length*(height+2);
     cvs.width = length*(width+2);
     board = Array(height+2).fill().map(() => Array(width+2).fill(-1));
