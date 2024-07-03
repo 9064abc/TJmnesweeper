@@ -77,7 +77,7 @@ function open(h,w){
 function place_flag(){
     
     long_press = true;
-    if(board[h][w] < 0){
+    if(board[h][w]<0 && game_status==1){
         Flag[h][w] *= -1;
         
         if(Flag[h][w] == 1){
