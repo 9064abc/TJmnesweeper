@@ -79,14 +79,16 @@ function place_flag(){
     long_press = true;
     if(board[h][w] < 0){
         Flag[h][w] *= -1;
-        draw();
+        
         if(Flag[h][w] == 1){
             mineNum -= 1;
-            //makeP(mineNum.toString());
+            makeP(mineNum.toString());
         }else{
             mineNum += 1;
+            makeP(Flag[h][w].toString);
         }
-        makeP(mineNum.toString());
+        //makeP(mineNum.toString());
+        draw();
     }
 }
 function ondown(event){
@@ -172,7 +174,7 @@ function onup(event){
         else if(game_status == -1){
             texttmp += "  Game Over";
         }else{
-            texttmp += "  CLEAR"
+            texttmp += "  CLEAR";
         }
         var statusE = document.getElementById("status");
         statusE.textContent = texttmp;   //'h:'+h.toString()+' j:'+w.toString()+' status:' + status.toString();
